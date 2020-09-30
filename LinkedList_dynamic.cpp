@@ -4,25 +4,39 @@
 using namespace std;
 
 class Node{
+public:
     string data;
     Node* next;
 };
 
 int main(){
     int limit = 0;
-    cin >> "Enter the number of nodes \n" >> limit;
+    cout << "Enter the number of terms \n";
+    cin >> limit;
     
     Node* ptr = NULL;
     Node* head = NULL;
     
     head = new Node();
     ptr = head;
-    for(int i=0; i<limit; i++){
-        cin >> "Enter data: ">> ptr ->data >> "\n";
-        ptr ->next = new Node();
+    cout << "Enter the values \n";
+        cin >> ptr->data;
+    for(int i=0; i<limit -1; i++){
+        ptr->next = new Node();
         ptr = ptr->next;
+        cout << "Enter the values \n";
+        cin >> ptr->data;
     }
-    cin >> "Enter data: ">> ptr->data >> "\n";
     ptr->next = NULL;
     
+    Node* node = NULL;
+    node = new Node();
+    node->next = head;
+
+    while(node->next != NULL){
+        cout << (node->next->data) << "\n";
+        node->next = node->next->next;
+    }
+
+    return 0;
 }
